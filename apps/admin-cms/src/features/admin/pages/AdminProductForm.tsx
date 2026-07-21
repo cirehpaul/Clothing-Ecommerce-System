@@ -133,7 +133,7 @@ export default function AdminProductForm() {
 
             <div>
               <label className="label">Brand</label>
-              <input {...register('brand')} className="input" placeholder="JŌNEL" />
+              <input {...register('brand')} className="input" placeholder="TIMELESS" />
             </div>
 
             <div>

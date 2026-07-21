@@ -8,6 +8,7 @@ import { Eye, EyeOff, ArrowRight, Lock } from 'lucide-react'
 import { useAuthStore } from '@/stores/authStore'
 import api from '@/lib/api'
 import toast from 'react-hot-toast'
+import Logo from '@/components/common/Logo'
 
 const schema = z.object({
   email: z.string().email('Invalid email'),
@@ -49,10 +50,8 @@ export default function LoginPage() {
         className="hidden lg:flex flex-col justify-between w-1/2 p-16 relative overflow-hidden"
         style={{ background: 'var(--text-primary)', color: 'var(--bg)' }}
       >
-        <Link to="/" className="flex items-center gap-2 z-10 relative">
-          <div className="w-9 h-9 rounded-lg flex items-center justify-center font-black border"
-            style={{ borderColor: 'rgba(255,255,255,0.3)' }}>J</div>
-          <span className="font-black text-2xl" style={{ fontFamily: 'var(--font-display)' }}>JŌNEL</span>
+        <Link to="/" className="inline-block z-10 relative">
+          <Logo />
         </Link>
         <div className="z-10 relative">
           <span className="text-xs font-bold tracking-widest uppercase opacity-50 block mb-4">
@@ -78,11 +77,9 @@ export default function LoginPage() {
         className="flex-1 flex items-center justify-center p-8"
       >
         <div className="w-full max-w-sm">
-          {/* Mobile Logo */}
-          <Link to="/" className="flex items-center gap-2 mb-10 lg:hidden justify-center">
-            <div className="w-9 h-9 rounded-lg flex items-center justify-center font-black"
-              style={{ background: 'var(--text-primary)', color: 'var(--bg)' }}>J</div>
-            <span className="font-black text-2xl" style={{ fontFamily: 'var(--font-display)' }}>JŌNEL</span>
+          {/* Logo */}
+          <Link to="/" className="inline-block mb-10 group lg:hidden">
+            <Logo />
           </Link>
 
           <div className="flex items-center gap-3 mb-2">

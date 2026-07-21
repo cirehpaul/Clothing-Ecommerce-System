@@ -8,6 +8,7 @@ import { Eye, EyeOff, ArrowRight, Lock } from 'lucide-react'
 import { useAuthStore } from '@/stores/authStore'
 import api from '@/lib/api'
 import toast from 'react-hot-toast'
+import Logo from '@/components/common/Logo'
 
 const schema = z.object({
   email: z.string().email('Invalid email'),
@@ -49,40 +50,35 @@ export default function LoginPage() {
         className="hidden lg:flex flex-col justify-between w-1/2 p-16 relative overflow-hidden"
         style={{ background: 'var(--text-primary)', color: 'var(--bg)' }}
       >
-        <Link to="/" className="flex items-center gap-2 z-10 relative">
-          <div className="w-9 h-9 rounded-lg flex items-center justify-center font-black border"
-            style={{ borderColor: 'rgba(255,255,255,0.3)' }}>J</div>
-          <span className="font-black text-2xl" style={{ fontFamily: 'var(--font-display)' }}>JŌNEL</span>
+        <Link to="/" className="inline-block z-10 relative">
+          <Logo />
         </Link>
         <div className="z-10 relative">
           <span className="text-xs font-bold tracking-widest uppercase opacity-50 block mb-4">
             Admin Portal
           </span>
-          <h2 className="text-5xl font-black leading-[1.1] mb-6" style={{ fontFamily: 'var(--font-display)' }}>
-            Manage your<br />store with ease.
+          <h2 className="text-5xl font-black mb-6 leading-[1.1]" style={{ fontFamily: 'var(--font-display)' }}>
+            Manage your store with precision.
           </h2>
-          <p className="text-base opacity-60 max-w-xs leading-relaxed">
-            Access your dashboard, manage products, track orders, and grow your business.
+          <p className="text-lg opacity-70 max-w-md">
+            Everything you need to run your premium clothing business efficiently.
           </p>
         </div>
-        <p className="text-sm opacity-30 z-10 relative">© {new Date().getFullYear()} JŌNEL Clothing</p>
-        {/* Decorative */}
-        <div className="absolute -right-20 -bottom-20 w-80 h-80 rounded-full" style={{ background: 'rgba(255,255,255,0.04)' }} />
-        <div className="absolute right-20 -top-10 w-48 h-48 rounded-full" style={{ background: 'rgba(255,255,255,0.03)' }} />
+        <p className="text-sm opacity-30 z-10 relative">© {new Date().getFullYear()} TIMELESS Clothing</p>
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-br from-white/10 to-transparent rounded-full translate-x-1/3 -translate-y-1/3 blur-3xl pointer-events-none" />
       </motion.div>
 
-      {/* Right Form Panel */}
+      {/* Right Login Panel */}
       <motion.div
-        initial={{ opacity: 0, x: 30 }}
-        animate={{ opacity: 1, x: 0 }}
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 0.1 }}
         className="flex-1 flex items-center justify-center p-8"
       >
         <div className="w-full max-w-sm">
-          {/* Mobile Logo */}
-          <Link to="/" className="flex items-center gap-2 mb-10 lg:hidden justify-center">
-            <div className="w-9 h-9 rounded-lg flex items-center justify-center font-black"
-              style={{ background: 'var(--text-primary)', color: 'var(--bg)' }}>J</div>
-            <span className="font-black text-2xl" style={{ fontFamily: 'var(--font-display)' }}>JŌNEL</span>
+          {/* Logo */}
+          <Link to="/" className="inline-block mb-10 group lg:hidden">
+            <Logo />
           </Link>
 
           <div className="flex items-center gap-3 mb-2">

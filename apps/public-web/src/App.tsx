@@ -4,6 +4,8 @@ import { useThemeStore } from '@/stores/themeStore'
 import StorefrontLayout from '@/components/layout/StorefrontLayout'
 import PageLoader from '@/components/common/PageLoader'
 
+import Preloader from '@/components/common/Preloader'
+
 // ── Storefront Pages (all public) ─────────────────────────
 const HomePage = lazy(() => import('@/features/shop/pages/HomePage'))
 const ProductsPage = lazy(() => import('@/features/shop/pages/ProductsPage'))
@@ -18,9 +20,11 @@ export default function App() {
   }, [isDark])
 
   return (
-    <Suspense fallback={<PageLoader />}>
-      <Routes>
-        {/* ── Public Storefront ─── */}
+    <>
+      <Preloader />
+      <Suspense fallback={<PageLoader />}>
+        <Routes>
+          {/* ── Public Storefront ─── */}
         <Route element={<StorefrontLayout />}>
           <Route path="/" element={<HomePage />} />
           <Route path="/products" element={<ProductsPage />} />
@@ -32,5 +36,6 @@ export default function App() {
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Suspense>
+    </>
   )
 }

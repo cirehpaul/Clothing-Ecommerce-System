@@ -4,16 +4,16 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "tsx watch src/index.ts",
-    "build": "tsup src/index.ts --format esm",
-    "start": "node dist/index.js",
+    "dev": "tsx watch local.ts",
+    "build": "tsup local.ts --format esm",
+    "start": "node dist/local.js",
     "db:generate": "drizzle-kit generate",
     "db:push": "drizzle-kit push",
     "db:seed": "tsx src/db/seed.ts",
     "db:studio": "drizzle-kit studio"
   },
   "dependencies": {
-    "@hono/node-server": "^1.14.1",
+    "@hono/node-server": "^1.19.14",
     "bcryptjs": "^2.4.3",
     "cloudinary": "^2.6.1",
     "dayjs": "^1.11.13",

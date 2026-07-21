@@ -35,7 +35,7 @@ const TESTIMONIALS = [
     name: 'Ana Reyes',
     avatar: 'https://i.pravatar.cc/48?img=5',
     rating: 5,
-    text: 'JŌNEL is my go-to brand now. The oversized tee fits perfectly and gets so many compliments.',
+    text: 'TIMELESS is my go-to brand now. The oversized tee fits perfectly and gets so many compliments.',
     product: 'Oversized Drop Shoulder Tee',
   },
 ]

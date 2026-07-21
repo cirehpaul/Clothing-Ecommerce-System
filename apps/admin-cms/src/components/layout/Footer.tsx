@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Instagram, Facebook, Twitter, Mail, Phone, MapPin } from 'lucide-react'
+import Logo from '@/components/common/Logo'
 
 const LINKS = {
   shop: [
@@ -34,9 +35,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2">
             <Link to="/" className="flex items-center gap-2 mb-4">
-              <div className="w-9 h-9 rounded-lg flex items-center justify-center font-black text-base"
-                style={{ background: 'var(--text-primary)', color: 'var(--bg)' }}>J</div>
-              <span className="font-black text-2xl tracking-tight" style={{ fontFamily: 'var(--font-display)' }}>JŌNEL</span>
+              <Logo />
             </Link>
             <p className="text-sm leading-relaxed mb-6 max-w-xs" style={{ color: 'var(--text-secondary)' }}>
               Premium clothing crafted for modern life. Every piece tells a story of quality, comfort, and contemporary design.

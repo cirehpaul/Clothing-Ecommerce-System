@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/index.ts",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/api/index.ts"
+    }
+  ],
+  "env": {
+    "DATABASE_URL": "postgresql://neondb_owner:npg_yqiOwk9l3cFh@ep-silent-heart-awt3vu1k.c-12.us-east-1.aws.neon.tech/neondb?sslmode=require",
+    "JWT_SECRET": "jonel_clothing_jwt_secret_2024_prod",
+    "CORS_ORIGINS": "https://admin-cms-vert.vercel.app,https://public-web-ten-brown.vercel.app,http://localhost:5173,http://localhost:5174,http://localhost:5175"
+  }
+}

@@ -18,7 +18,7 @@ export default function AdminSettings() {
           <h3 className="font-bold border-b pb-2">Branding</h3>
           <div>
             <label className="label">Store Name</label>
-            <input type="text" className="input" defaultValue="JŌNEL Clothing" />
+            <input type="text" className="input" defaultValue="TIMELESS Clothing" />
           </div>
           <div>
             <label className="label">Store Description (SEO)</label>

@@ -8,6 +8,7 @@ import { Eye, EyeOff, ArrowRight } from 'lucide-react'
 import { useAuthStore } from '@/stores/authStore'
 import api from '@/lib/api'
 import toast from 'react-hot-toast'
+import Logo from '@/components/common/Logo'
 
 const schema = z.object({
   firstName: z.string().min(1, 'First name is required').max(100),
@@ -51,10 +52,8 @@ export default function RegisterPage() {
         animate={{ opacity: 1, y: 0 }}
         className="w-full max-w-sm"
       >
-        <Link to="/" className="flex items-center gap-2 mb-8 justify-center">
-          <div className="w-9 h-9 rounded-lg flex items-center justify-center font-black"
-            style={{ background: 'var(--text-primary)', color: 'var(--bg)' }}>J</div>
-          <span className="font-black text-2xl" style={{ fontFamily: 'var(--font-display)' }}>JŌNEL</span>
+        <Link to="/" className="inline-block mb-8 mx-auto w-fit">
+          <Logo />
         </Link>
 
         <h1 className="text-2xl font-black mb-1">Create Account</h1>

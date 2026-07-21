@@ -9,6 +9,7 @@ import { useState } from 'react'
 import { useAuthStore } from '@/stores/authStore'
 import { cn, getInitials } from '@/lib/utils'
 import toast from 'react-hot-toast'
+import Logo from '@/components/common/Logo'
 
 const NAV_ITEMS = [
   { icon: LayoutDashboard, label: 'Dashboard', href: '/' },
@@ -42,13 +43,8 @@ export default function AdminLayout() {
     <>
       {/* Logo */}
       <div className="p-5 border-b" style={{ borderColor: 'var(--border)' }}>
-        <Link to="/" className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg flex items-center justify-center font-black"
-            style={{ background: 'var(--text-primary)', color: 'var(--bg)' }}>J</div>
-          <div>
-            <p className="font-black text-sm" style={{ fontFamily: 'var(--font-display)' }}>JŌNEL</p>
-            <p className="text-[10px]" style={{ color: 'var(--text-tertiary)' }}>Admin CMS</p>
-          </div>
+        <Link to="/admin" className="flex items-center gap-3 px-2 mb-8">
+          <Logo iconOnly />
         </Link>
       </div>
 

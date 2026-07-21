@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Search, Sun, Moon, Menu, X } from 'lucide-react'
 import { useThemeStore } from '@/stores/themeStore'
 import { useUIStore } from '@/stores/uiStore'
+import Logo from '@/components/common/Logo'
 import { cn } from '@/lib/utils'
 
 const NAV_LINKS = [
@@ -54,13 +55,8 @@ export default function Header() {
           <div className="flex items-center justify-between h-16">
 
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center text-sm font-black"
-                style={{ background: 'var(--text-primary)', color: 'var(--bg)' }}>J</div>
-              <span className="font-black text-xl tracking-tight"
-                style={{ fontFamily: 'var(--font-display)', color: 'var(--text-primary)' }}>
-                JŌNEL
-              </span>
+            <Link to="/admin" className="flex items-center gap-2">
+              <Logo />
             </Link>
 
             {/* Desktop Nav */}
