@@ -26,7 +26,14 @@ app.use('*', logger());
 app.use(
   '*',
   cors({
-    origin: process.env.CORS_ORIGINS?.split(',') || ['http://localhost:5173', 'http://localhost:5174'],
+    origin: process.env.CORS_ORIGINS?.split(',') || [
+      'http://localhost:5173',
+      'http://localhost:5174',
+      'http://localhost:5175',
+      'https://admin-cms-vert.vercel.app',
+      'https://timeless-selection.vercel.app',
+      'https://public-web-ten-brown.vercel.app',
+    ],
     allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
     credentials: true,
   })
