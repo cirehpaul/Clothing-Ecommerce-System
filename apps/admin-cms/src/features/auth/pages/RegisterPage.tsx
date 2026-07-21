@@ -58,15 +58,9 @@ export default function RegisterPage() {
           <Logo />
         </Link>
         <div className="z-10 relative">
-          <span className="text-xs font-bold tracking-widest uppercase opacity-50 block mb-4">
-            Admin Portal
-          </span>
-          <h2 className="text-5xl font-black mb-6 leading-[1.1]" style={{ fontFamily: 'var(--font-display)' }}>
-            Join the team.
+          <h2 className="text-5xl font-black leading-[1.1]" style={{ fontFamily: 'var(--font-display)' }}>
+            Welcome to Timeless
           </h2>
-          <p className="text-lg opacity-70 max-w-md">
-            Create an administrator account to manage products, orders, and premium experiences.
-          </p>
         </div>
         <p className="text-sm opacity-30 z-10 relative">© {new Date().getFullYear()} TIMELESS Clothing</p>
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-br from-white/10 to-transparent rounded-full translate-x-1/3 -translate-y-1/3 blur-3xl pointer-events-none" />
