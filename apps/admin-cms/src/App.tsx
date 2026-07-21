@@ -7,6 +7,7 @@ import PageLoader from '@/components/common/PageLoader'
 
 // ── Admin Auth ────────────────────────────────────────────
 const LoginPage = lazy(() => import('@/features/auth/pages/LoginPage'))
+const RegisterPage = lazy(() => import('@/features/auth/pages/RegisterPage'))
 
 // ── Admin Pages ───────────────────────────────────────────
 const AdminDashboard = lazy(() => import('@/features/admin/pages/AdminDashboard'))
@@ -53,6 +54,7 @@ export default function App() {
       <Routes>
         {/* ── Admin Login ──────────────────────────────── */}
         <Route path="/login" element={<GuestOnly><LoginPage /></GuestOnly>} />
+        <Route path="/register" element={<GuestOnly><RegisterPage /></GuestOnly>} />
 
         {/* ── Admin Panel ──────────────────────────────── */}
         <Route path="/" element={<RequireAdmin><AdminLayout /></RequireAdmin>}>

@@ -139,6 +139,15 @@ export default function LoginPage() {
               {isSubmitting ? 'Signing In...' : 'Sign In to Dashboard'}
               {!isSubmitting && <ArrowRight size={16} />}
             </button>
+
+            <div className="text-center mt-4">
+              <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>
+                Don't have an account?{' '}
+                <Link to="/register" style={{ color: 'var(--text-primary)' }} className="font-semibold underline hover:opacity-80 transition-opacity">
+                  Create Account
+                </Link>
+              </p>
+            </div>
           </form>
 
           {/* Demo hint */}

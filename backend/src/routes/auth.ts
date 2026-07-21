@@ -47,6 +47,56 @@ authApp.post('/login', async (c) => {
   }
 });
 
+authApp.post('/register', async (c) => {
+  try {
+    const { email, password, fullName, phone } = await c.req.json();
+    
+    if (!email || !password || !fullName) {
+      return c.json({ success: false, error: 'Email, password, and full name are required' }, 400);
+    }
+
+    // Check if email exists
+    const existingUser = await db.query.users.findFirst({
+      where: eq(users.email, email),
+    });
+
+    if (existingUser) {
+      return c.json({ success: false, error: 'Email already exists' }, 400);
+    }
+
+    // Hash password
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    // Split name
+    const nameParts = fullName.trim().split(' ');
+    const firstName = nameParts[0];
+    const lastName = nameParts.length > 1 ? nameParts.slice(1).join(' ') : '';
+
+    // Create user (default to admin)
+    const [newUser] = await db.insert(users).values({
+      email,
+      password: hashedPassword,
+      firstName,
+      lastName,
+      phone: phone || null,
+      role: 'admin',
+      isActive: true,
+    }).returning();
+
+    const { password: _, ...userWithoutPassword } = newUser;
+
+    return c.json({
+      success: true,
+      data: {
+        user: userWithoutPassword,
+      },
+    }, 201);
+  } catch (err) {
+    console.error('Registration Error:', err);
+    return c.json({ success: false, error: 'Internal server error during registration' }, 500);
+  }
+});
+
 authApp.get('/me', async (c) => {
   const authHeader = c.req.header('Authorization');
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
