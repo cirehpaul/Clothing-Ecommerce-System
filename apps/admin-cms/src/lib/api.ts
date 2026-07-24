@@ -1,64 +1,91 @@
 import { useAuthStore } from '@/stores/authStore';
 
-const API_URL = import.meta.env.VITE_API_URL || 'https://backend-ivory-five-74.vercel.app';
+const API_URL =
+  import.meta.env.VITE_API_URL ||
+  'https://backend-ivory-five-74.vercel.app';
 
-/**
- * Axios-compatible API client that wraps fetch.
- * All existing components use api.get(), api.post(), api.put(), api.delete()
- * and expect { data: ... } in the response, mirroring Axios behaviour.
- */
-async function request(method: string, url: string, body?: any) {
+async function request(method: string, url: string, body?: unknown) {
   const token = useAuthStore.getState().token;
 
-  const headers: Record<string, string> = {
+  const headers: HeadersInit = {
     'Content-Type': 'application/json',
   };
+
   if (token) {
     headers['Authorization'] = `Bearer ${token}`;
   }
 
-  // Normalise URL: /admin/products -> /api/products (backend has no /admin prefix)
+  // Remove "/admin" prefix if present
   let apiPath = url;
+
   if (apiPath.startsWith('/admin/')) {
-    apiPath = '/' + apiPath.slice(7); // strip "admin/"
+    apiPath = apiPath.replace('/admin', '');
   }
-  // Prefix with /api if not already prefixed
-  if (!apiPath.startsWith('/api/')) {
-    apiPath = '/api' + apiPath;
+
+  // Ensure "/api" prefix
+  if (!apiPath.startsWith('/api')) {
+    apiPath = `/api${apiPath}`;
   }
 
   const fullUrl = `${API_URL}${apiPath}`;
 
-  const res = await fetch(fullUrl, {
-    method,
-    headers,
-    body: body ? JSON.stringify(body) : undefined,
-  });
-
-  let data: any;
-  const text = await res.text();
   try {
-    data = JSON.parse(text);
-  } catch {
-    data = { success: false, error: text };
-  }
+    const response = await fetch(fullUrl, {
+      method,
+      headers,
+      body: body ? JSON.stringify(body) : undefined,
+    });
 
-  if (!res.ok) {
-    const err: any = new Error(data?.error || `Request failed with status ${res.status}`);
-    err.response = { data, status: res.status };
+    let data: any = null;
+
+    const contentType = response.headers.get('content-type');
+
+    if (contentType?.includes('application/json')) {
+      data = await response.json();
+    } else {
+      const text = await response.text();
+      data = {
+        success: false,
+        message: text || 'Server returned no response',
+      };
+    }
+
+    if (!response.ok) {
+      const error: any = new Error(
+        data?.message ||
+        data?.error ||
+        `Request failed (${response.status})`
+      );
+
+      error.response = {
+        status: response.status,
+        data,
+      };
+
+      throw error;
+    }
+
+    return {
+      data,
+      status: response.status,
+    };
+  } catch (err: any) {
+    console.error('API Request Failed:', {
+      url: fullUrl,
+      method,
+      error: err,
+    });
+
     throw err;
   }
-
-  // Return in Axios-compatible shape: { data: <parsed json> }
-  return { data };
 }
 
 const api = {
   get: (url: string) => request('GET', url),
-  post: (url: string, body?: any) => request('POST', url, body),
-  put: (url: string, body?: any) => request('PUT', url, body),
+  post: (url: string, body?: unknown) => request('POST', url, body),
+  put: (url: string, body?: unknown) => request('PUT', url, body),
+  patch: (url: string, body?: unknown) => request('PATCH', url, body),
   delete: (url: string) => request('DELETE', url),
-  patch: (url: string, body?: any) => request('PATCH', url, body),
 };
 
 export default api;
