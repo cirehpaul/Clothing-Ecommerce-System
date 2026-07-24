@@ -1,6 +1,6 @@
 import { Hono } from 'hono';
-import { db } from '../db';
-import { banners, products, categories, siteSettings, announcements } from '../db/schema';
+import { db } from '../db/index.js';
+import { banners, products, categories, siteSettings, announcements } from '../db/schema.js';
 import { eq, desc } from 'drizzle-orm';
 
 const storeApp = new Hono();

@@ -1,6 +1,6 @@
 import { Hono } from 'hono';
-import { adminMiddleware } from '../middleware/auth';
-import cloudinary from '../lib/cloudinary';
+import { adminMiddleware } from '../middleware/auth.js';
+import cloudinary from '../lib/cloudinary.js';
 
 const uploadApp = new Hono();
 

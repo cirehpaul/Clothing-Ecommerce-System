@@ -1,7 +1,7 @@
 import { Context, Next } from 'hono';
 import jwt from 'jsonwebtoken';
-import { db } from '../db';
-import { users } from '../db/schema';
+import { db } from '../db/index.js';
+import { users } from '../db/schema.js';
 import { eq } from 'drizzle-orm';
 
 export const authMiddleware = async (c: Context, next: Next) => {

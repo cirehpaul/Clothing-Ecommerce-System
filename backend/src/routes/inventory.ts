@@ -1,8 +1,8 @@
 import { Hono } from 'hono';
-import { db } from '../db';
-import { products, productVariants } from '../db/schema';
+import { db } from '../db/index.js';
+import { products, productVariants } from '../db/schema.js';
 import { eq } from 'drizzle-orm';
-import { authMiddleware, adminMiddleware } from '../middleware/auth';
+import { authMiddleware, adminMiddleware } from '../middleware/auth.js';
 
 const inventoryApp = new Hono();
 

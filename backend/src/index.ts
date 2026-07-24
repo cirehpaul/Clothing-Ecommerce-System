@@ -5,20 +5,20 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-import authRoutes from './routes/auth';
-import uploadRoutes from './routes/upload';
-import productsRoutes from './routes/products';
-import categoriesRoutes from './routes/categories';
-import bannersRoutes from './routes/banners';
-import dashboardRoutes from './routes/dashboard';
-import ordersRoutes from './routes/orders';
-import pagesRoutes from './routes/pages';
-import couponsRoutes from './routes/coupons';
-import customersRoutes from './routes/customers';
-import paymentsRoutes from './routes/payments';
-import reportsRoutes from './routes/reports';
-import inventoryRoutes from './routes/inventory';
-import storeRoutes from './routes/store';
+import authRoutes from './routes/auth.js';
+import uploadRoutes from './routes/upload.js';
+import productsRoutes from './routes/products.js';
+import categoriesRoutes from './routes/categories.js';
+import bannersRoutes from './routes/banners.js';
+import dashboardRoutes from './routes/dashboard.js';
+import ordersRoutes from './routes/orders.js';
+import pagesRoutes from './routes/pages.js';
+import couponsRoutes from './routes/coupons.js';
+import customersRoutes from './routes/customers.js';
+import paymentsRoutes from './routes/payments.js';
+import reportsRoutes from './routes/reports.js';
+import inventoryRoutes from './routes/inventory.js';
+import storeRoutes from './routes/store.js';
 
 const app = new Hono();
 

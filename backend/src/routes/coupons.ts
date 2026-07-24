@@ -1,8 +1,8 @@
 import { Hono } from 'hono';
-import { db } from '../db';
-import { coupons } from '../db/schema';
+import { db } from '../db/index.js';
+import { coupons } from '../db/schema.js';
 import { eq } from 'drizzle-orm';
-import { authMiddleware, adminMiddleware } from '../middleware/auth';
+import { authMiddleware, adminMiddleware } from '../middleware/auth.js';
 
 const couponsApp = new Hono();
 
