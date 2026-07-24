@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "tsx watch local.ts",
-    "build": "tsup local.ts --format esm",
+    "build": "tsup src/index.ts --format cjs --out-dir dist && tsup local.ts --format esm",
     "start": "node dist/local.js",
     "db:generate": "drizzle-kit generate",
     "db:push": "drizzle-kit push",
